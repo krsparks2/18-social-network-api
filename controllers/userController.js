@@ -32,7 +32,7 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
     },
     
-	// Create/post to add friend
+
 	addFriend( req, res) {
 		User.findOneAndUpdate(
 			{ _id: req.params.userId },
@@ -41,14 +41,14 @@ module.exports = {
 		)
 			.then((userData) => {
 				if (!userData) {
-					res.status(404).json({ message: "No user was found with this id." });
+					res.status(404).json({ message: "No user with this id." });
 					return;
 				}
 				res.json(userData);
 			})
 			.catch((err) => res.status(400).json(err));
 	},
-	// Delete friend
+
 	deleteFriend(req, res) {
 		User.findOneAndUpdate(
 			{ _id: req.params.userId },
@@ -57,7 +57,7 @@ module.exports = {
 		)
 			.then((userData) => {
 				if (!userData) {
-					res.json(404).json({ message: "No user was found with this id." });
+					res.json(404).json({ message: "No user with this id." });
 					return;
 				}
 				res.json(userData);
